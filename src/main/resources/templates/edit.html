@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>EditDetails</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script type="text/javascript">
+	$('.date').datepicker({
+		format : 'dd/mm/yyyy',
+		autoclose : true,
+		todayBtn : true
+	});
+
+    function fetch(id){
+        $.ajax({
+         type: "get",
+         url:"http://localhost:8080/getpayslip"+id,
+         success: function(response){
+          var obj = response;
+          $('#gross').html(obj.grossSalary);  
+          $('#income').html(obj.incomeTax);
+          $('#netpay').html(obj.netPay);
+
+                  },
+         error: function(){      
+          alert('Error while request..');
+         }
+        });
+       } 
+       
+      
+</script>
+
+<style type="text/css">
+body {
+	background-color: #afeeee;
+	font-family: serif;
+	font-size: 12;
+	font-style: bold;
+	/* 	background-image: url('../../image/img.jpg');
+ */
+}
+
+#salary {
+	width: 50%;
+}
+
+#textarea {
+	width: 50%;
+}
+
+#textarea1 {
+	width: 50%;
+}
+
+#name {
+	width: 50%;
+	margin-right: 100px;
+}
+
+.btn {
+	margin-right: 50px;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="Absolute-Center is-Responsive">
+				<div id="logo-container"></div>
+				<div class="col-sm-12 col-md-10 col-md-offset-1">
+					<form th:action="@{/editEmp/{id}(id=${employeeDTO.id})}"
+						method="post" th:object="${employeeDTO}"
+						enctype="multipart/form-data">
+						<table style="width: 70%">
+						
+							<h2>
+								<span class="label label-primary" id="header">Employee
+									Details</span>
+							</h2>
+							<br>
+
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Enter your Name:</span></td>
+								</h4>
+								<td><input type="text" th:field="*{name}" id="name"
+									th:value="${name}" class="form-control"></td>
+							</tr>
+
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Enter your Date of
+											Birth:</span></td>
+								</h4>
+								<td>
+									<div class="input-group date" id="textarea"
+										data-provide="datepicker">
+										<input type="text" th:field="*{dob}" id="dob"
+											th:value="${dob}" class="form-control">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-th"></span>
+										</div>
+									</div>
+
+								</td>
+							</tr>
+
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Enter your Date of
+											Joining:</span></td>
+								</h4>
+								<td>
+									<div class="input-group date" id="textarea1"
+										data-provide="datepicker">
+										<input type="text" th:field="*{doj}" id="doj"
+											th:value="${doj}" class="form-control">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-th"></span>
+										</div>
+									</div>
+								</td>
+							</tr>
+
+
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Enter your Salary:</span></td>
+								</h4>
+								<td><input type="text" th:field="*{salary}" id="salary"
+									th:value="${salary}"></td>
+							</tr>
+
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Select Designation</span></td>
+								</h4>
+									<td><input type="radio" th:field="*{designation}" id="designation"
+									th:value="1">Developer
+									<input type="radio" th:field="*{designation}" id="designation"
+									th:value="2">Tester 
+									<input type="radio" th:field="*{designation}" id="designation"
+									th:value="3">TeamLead </td>
+								
+							<tr>
+								<td><h4>
+										<span class="label label-primary">Select EmployeeType:</span></td>
+										
+										
+								</h4>
+
+								<td><input type="radio" th:field="*{empType}" id="empType"
+									th:value="1">Temporary <input type="radio"
+									th:field="*{empType}" id="empType" th:value="2">Permanent</td>
+						</table>
+
+						<input type="submit" class="btn btn-success" value="Submit"
+							id="btn"><br>
+
+
+						<tr>  
+							<th>
+								<h3>PAYROLL DETAILS</h3>
+							</th>
+						</tr>
+						<table border="1">
+
+							<tr>
+								<td><b>Id</b></td>
+								<td><b>BasicSalary</b></td>
+								<td><b>HRA</b></td>
+								<td><b>DA</b></td>
+								<td><b>Month</b></td>
+								<td><b>Year</b></td>
+								<td><b>PaySlip</b></td>
+							<tr>
+							<tr th:each="payroll :${employeeDTO.payRoll}">
+								<td th:text="${payroll.id}" />
+								<td th:text="${payroll.basicSalary}" />
+								<td th:text="${payroll.hra}" />
+								<td th:text="${payroll.da}" />
+								<td th:text="${payroll.month}" />
+								<td th:text="${payroll.year}" />
+
+								<div id="payslips">
+
+		     <td><a   th:href="'javascript:fetch('+${payroll.id}+');'">Get Payslip</a> 
+  <!-- 
+								  <td><input type="button" id="pid" name="payrollid"
+										th:value="${payroll.id}" onclick="load()">GetPayslip</input> 
+										 -->
+										 
+								</div>
+
+								</td>
+
+							</tr>
+						</table>
+
+						<tr>
+							<th>
+								<h3>
+									<span class="label label-primary" id="header">Payslip
+										Details:</span>
+								</h3> <br>
+							</th>
+						</tr>
+						<table border="1">
+							<tr>
+								<td><b>Gross Salary</b></td>
+								<td><b>Income Tax</b></td>
+								<td><b>Net Salary</b></td>
+							</tr>
+        				 <tr><td><div id="gross"></div></td>
+         				<td><div id="income"></div></td>
+         				 <td><div id="netpay"></div></td></tr>
+         				
+         				
+										</table>
+						<br>
+
+						<tr>
+							<td><a th:href="@{/insertpayroll/{id}(id=${id})}"
+								class="btn btn-success">Add Payroll</a> </td>
+						</tr>
+					</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>EditDetails</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<style type="text/css">
+body {
+	background-color: #afeeee;
+	font-family: serif;
+	font-size: 12;
+	font-style: bold;
+
+ }
+ 
+ </style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="Absolute-Center is-Responsive">
+<div id="logo-container"></div>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<tr>
+							<th>
+            <h3>
+				<span class="label label-primary" id="header">Welcome User!Your Payslip Details:</span>
+			</h3>		<br>					</th>
+							</tr>
+							<table border="1">
+							<tr>
+							<td><b>Gross Salary</b></td>
+							<td><b>Income Tax</b></td>
+							<td><b>Net Salary</b></td>
+							</tr>
+							   <tr>
+	   
+							<td th:text="${payslipDTO.grossSalary}"  />
+							<td th:text="${payslipDTO.incomeTax}" />
+							<td th:text="${payslipDTO.netPay}" />
+							</tr> 
+					</table>
+	
+						
+</body>
+</html>

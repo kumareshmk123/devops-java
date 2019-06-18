@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" >
+    
+    	<head>
+		<meta charset="UTF-8">
+		<title>EmployeeDetails</title>
+		
+ 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script type="text/javascript">
+	$('.date').datepicker({
+		format : 'dd/mm/yyyy',
+		autoclose : true,
+		todayBtn : true
+	});
+</script>
+<style type="text/css">
+   body { background:#afeeee;
+    } 
+  #lang{
+margin-left: 700px;
+font-family:serif;
+font-size: medium;
+}
+</style>
+</head>
+<body>
+<div class="container">
+		<div class="row">
+			<div class="Absolute-Center is-Responsive">
+				<div id="logo-container"></div>
+				<div class="col-sm-12 col-md-10 col-md-offset-1">
+					<table border="2">
+						
+	<form th:action="@{/insertemp}" method="post" th:object="${employeeDTO}" enctype="multipart/form-data">
+	<table id="align" style="with: 70%">
+				<h2><span class="label label-info">Employee Details</span></h2><br>
+	
+	
+					<tr>
+						<td><h4>
+						<span class="label label-primary">Enter your Name:</span></td>
+						</h4>             		<td>
+					<div class="input-group">
+					<input type="text" th:field="*{name}" id="name">
+					</div><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+					</td>
+					</tr>
+										
+									  <tr>
+					<td><h4>
+					<span class="label label-primary">Enter your Date of
+					Birth:</span></td>
+					</h4>
+		
+ 				<td>
+     			<div class="input-group date" data-provide="datepicker">
+					<input type="text" th:field="*{dob}" id="dob"
+					class="form-control">
+					<div class="input-group-addon">
+					<span class="glyphicon glyphicon-th"></span>
+					</div>
+					</div>
+					</td>
+					</tr>
+					
+				    <tr>			
+ 					<td><h4><span class="label label-primary">Enter your Date of Join:</span></td></h4>
+ 	
+					
+					<td>
+					<div class="input-group date" data-provide="datepicker">
+					<input type="text" th:field="*{doj}" id="doj"
+					class="form-control">
+					<div class="input-group-addon">
+					<span class="glyphicon glyphicon-th"></span>
+					</div>
+					</div>
+					</td>
+					</tr>
+
+					<tr>
+					<td><h4><span class="label label-primary">Enter your Salary:</span></td></h4>
+ 
+ 
+         <div class="input-group">
+					<td><input type="text" th:field="*{salary}" id="salary"></td>
+					</div>
+					</tr>
+					
+					<tr>
+					 <td><h4><span class="label label-primary">Select Designation:</span></td></h4> 
+					
+					
+					<td><select th:field="*{designation}">
+				    <option th:value="'1'" id="designation" th:text="Developer">Developer</option>
+				    <option th:value="'2'" id="designation" th:text="Tester">Tester</option>
+				    <option th:value="'3'" id="designation" th:text="TeamLead">Team Lead</option>
+			    
+				</select></td>
+					
+					
+					<tr>
+					<div class="dark">
+					 <td><h4><span class="label label-primary">Select EmployeeType:</span></td></h4> 
+					 
+					<td><input type="radio" id="empType" th:field="*{empType}" value=1>Temporary
+					<input type="radio" id="empType" th:field="*{empType}" value=2>Permanent</td></div>
+					</tr>
+				</table>
+		
+		      <input type="submit" class="btn btn-success" value="Submit" id="btn">
+		</form>
+	
+
+</body>
+</html>

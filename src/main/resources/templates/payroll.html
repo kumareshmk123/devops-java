@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<style type="text/css">
+body {
+	background-color: #afeeee;
+	font-family: serif;
+	font-size: 12;
+	font-style: bold;
+
+ } 
+ .label {
+ font-size:10;
+ }
+</style>
+
+</head>
+<body>
+	<div class="container">
+<div class="row">
+<div class="Absolute-Center is-Responsive">
+<div id="logo-container"></div>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+	<form th:action="@{/payroll}" method="post" th:object="${payrollDTO}">
+		<table style="with: 70%">
+	
+	<h2>
+				<span class="label label-primary" id="header">Add Payroll
+					Details</span>
+			</h2>
+			<br>
+ <tr>
+				<td><span class="label label-primary"> Enter Employee
+						Id:</span></td>
+				<td>
+					<div class="input-group">
+						<input type="text" class="form-control" th:value="${empid}" 
+							>
+					</div>
+
+				</td>
+			</tr>
+			
+			<tr>
+				<td><span class="label label-primary">  Employee
+						Id:</span></td>
+				<td>
+					<div class="input-group">
+						<input type="text" class="form-control" th:value="${empid}" th:field="*{employeedto.id}"
+							id="employeedto.id">
+					</div>
+
+				</td>
+			</tr>
+			
+			<tr>
+			<td><span class="label label-primary"> Select Month:</span></td>
+				 <td>  <select class="form-control" th:field="*{month}" >
+					    <option value="January">January</option>
+					    <option value="February">February</option>
+					    <option value="March">March </option>
+				        <option value="Apirl">Apirl </option>
+				        <option value="May">May </option>
+				        <option value="June">June </option>
+				        <option value="July">July </option>
+				        <option value="August">August </option>
+				        <option value="September">September</option>
+				        <option value="October">October </option>
+				        <option value="November">November </option>
+				         <option value="December">December </option>
+						 </select></td>                                                                                                                                                      
+						 </tr>
+						 <tr>
+						 			<td><span class="label label-primary"> Select Year:</span></td>
+						 
+						    <td>
+						    <select th:field="*{year}"class="form-control" >
+		  		        	  <option th:each="year : ${#numbers.sequence(1950,2019)}" th:value="${year}" th:text="${year}">
+								    </option>
+								</select>
+								</td>
+							</tr>
+			<tr>
+				<td><span class="label label-primary"> Enter Basic
+						Salary</span></td>
+				<td>
+					<div class="input-group">
+						<input type="text" class="form-control" th:field="*{basicSalary}"
+							id="basicSalary">
+					</div>
+
+				</td>
+			</tr>
+					<tr><td><input type="submit" class="btn btn-success" value="Submit" id="btn"><br>
+			</td></tr>
+		</table> 
+	</form>
+</body>
+</html>

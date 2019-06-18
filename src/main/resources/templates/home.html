@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+
+<!-- Latest compiled and minified CSS -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<meta charset="UTF-8">
+<title>List</title>
+<link href="design.css" rel="stylesheet">
+<style type="text/css">
+
+body{
+background-color: #afeeee;
+}
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="Absolute-Center is-Responsive">
+				<div id="logo-container"></div>
+				<div class="col-sm-12 col-md-10 col-md-offset-1">
+					<table border="2">
+			
+						 
+						<h2>
+							<span  class="label label-info">Employee List</span>
+						</h2>
+						<br>
+						
+						
+						  <tr id="h3">
+							<th>ID</th>
+							<th>Name</th>
+							<th>Action</th>
+						</tr> 
+						<tr th:each="emp: ${employee}">
+							<td th:text="${emp.id}" />
+							<td th:text="${emp.name}" />
+							<td><a th:href="@{/edit/{id}(id=${emp.id})}">Edit</a> <a
+								th:href="@{/delete/{id}(id=${emp.id})}">Delete</a></td>
+					</table>
+					<td><br> <a href="userDetail" >MultiLanguage</a></br>
+						
+						<a href="display" class="btn btn-success">Add a new
+						user</a></td>
+						
+</body>
+</html>

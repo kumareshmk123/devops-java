@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body{
+	  background-image: url("home/roselinj/Downloads/image.jpg");
+	background-color:#afeeee;
+	font-family: cursive;
+}
+h2{
+	 padding: =50px;
+	 color:#0000ff;
+	 font-family:serif;
+}
+#h3{
+	color:#0000ff;
+}
+
+a{
+	color:#0000ff;
+}
+
+table{
+		color:#000000;
+	
+}
